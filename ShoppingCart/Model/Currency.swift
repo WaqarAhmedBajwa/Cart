@@ -2,8 +2,8 @@
 //  Currency.swift
 //  ShoppingCart
 //
-//  Created by Waqar on 2018-06-08.
-//  Copyright © 2020 Waqar All rights reserve
+//  Created by D. on 2018-06-08.
+//  Copyright © 2020 Waqar. All rights reserved.
 //
 
 import Foundation

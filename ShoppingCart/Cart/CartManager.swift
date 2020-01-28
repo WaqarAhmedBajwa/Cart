@@ -2,61 +2,47 @@
 //  Cart.swift
 //  ShoppingCart
 //
-//  Created by Waqar on 2010-01-27.
-//  Copyright © 2020 Waqar All rights reserve
+//  Created by D. on 2018-06-05.
+//  Copyright © 2020 Waqar. All rights reserved.
 //
 
 import Foundation
-import Combine
 
-extension Notification.Name {
-    static let cartChanges = Notification.Name("Update_List")
-    static let total = Notification.Name("TOTAL_AMOUNT")
+struct CartTotal {
+    
+    var price : Float
+    var quantity : Int
+    
 }
-
-//struct CartTotal {
-//    
-//    var price : Float
-//    var quantity : Int
-//    
-//}
-
 
 class CartManager {
     
-    private(set) var items : [CartItem] = [] {
-        didSet{
-            setup()
-        }
-    }
+    private(set) var items : [CartItem] = []
     let databaseManager : DatabaseManager!
     public static let shared = CartManager()
-    
+    public static let UPDATE_TRIGGER = "Update_List"
     private init() {
-        
         databaseManager = DatabaseManager()
-        notifyDataSet()
-        getProductsFromDatabase()
-        
+        items = databaseManager.getCartProducts()
     }
-//    @available(iOS 13.0, *)
-    var publisher: Publishers.Map<NotificationCenter.Publisher, String?>!
-    var publisherForTotal: Publishers.Map<NotificationCenter.Publisher, String?>!
 }
 
 extension CartManager {
     
-    private var total: Float {
+    var total: Float {
         get { return items.reduce(0.0) { value, item in
             value + item.getTotal()
             }
         }
     }
     
-    private var totalQuantity : Int {
+    var totalQuantity : Int {
         get { return items.count }
     }
     
+    
+    
+ 
     func updateItem(product: Saleable) {
 
         if let item = databaseManager.get(cartProduct: product) {
@@ -84,37 +70,27 @@ extension CartManager {
                 }
             }
         }
-        getProductsFromDatabase()
         
-    }
-    
-    private func getProductsFromDatabase(){
-        items = self.databaseManager.getCartProducts()
+        notifyDataSet()
     }
     
     private func notifyDataSet(){
-        
-        publisher = NotificationCenter.Publisher(center: .default,
-                                                 name: .cartChanges,
-                                                 object: nil)
-            .map { (notification) -> String in
-                guard let totalItems = notification.object as? [CartItem] else {
-                    return "Checkout 0"
-                }
-                return String("Checkout (\(totalItems.count))")
+        // get all from DB
+        /// notification center
+        DispatchQueue.global().async {
+            self.items = self.databaseManager.getCartProducts()
+            DispatchQueue.main.async {
+                let total = CartTotal(price: self.total, quantity: self.totalQuantity)
+                NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: CartManager.UPDATE_TRIGGER), object: total)
+            }
         }
         
-        publisherForTotal = NotificationCenter.Publisher(center: .default,
-                                                 name: .total,
-                                                 object: nil)
-            .map { (notification) -> String in
-                guard let totalAmount = notification.object as? Float else {
-                    return "0.0"
-                }
-                return String(totalAmount)
-        }
+        
     }
-    
+    private func remove(product: Saleable) {
+        guard let index = items.index(where: { $0.getId() == product.getId() }) else { return}
+        items.remove(at: index)
+    }
     
     func mapWithCart<T: Saleable>(saleable : [T]) -> [T]{
         
@@ -126,11 +102,5 @@ extension CartManager {
             }
         }
         return products as! [T]
-    }
-    
-    func setup()  {
-        
-        NotificationCenter.default.post(name: .cartChanges, object: items)
-        NotificationCenter.default.post(name: .total, object: total)
     }
 }

@@ -2,13 +2,11 @@
 //  ProductsTableViewController.swift
 //  ShoppingCart
 //
-//  Created by Waqar on 2018-06-04.
-//  Copyright © 2020 Waqar All rights reserve
+//  Created by Waqar on 2020-01-27.
+//  Copyright © 2020 Waqar. All rights reserved.
 //
 
 import UIKit
-import Combine
-
 
 class ProductsTableViewController: UITableViewController {
     
@@ -17,14 +15,11 @@ class ProductsTableViewController: UITableViewController {
     
     fileprivate let reuseIdentifier = "ProductCell"
     
-//    @Published
-//    var cartValues: CartTotal?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView(frame: .zero)
-        
+        self.navigationItem.rightBarButtonItem?.title = "Checkout (\(cart.totalQuantity))"
     }
     
     
@@ -36,19 +31,24 @@ class ProductsTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         //Update cart if some items quantity is equal to 0 and reload the product table and right button bar item
-     
+        
         products = cart.mapWithCart(saleable: products)
-        guard let barItem = self.navigationItem.rightBarButtonItem else { return }
-        let totalQuantitySubscriber = Subscribers.Assign(object: barItem, keyPath: \.title)
-        cart.publisher.subscribe(totalQuantitySubscriber)
-        cart.setup()
+        NotificationCenter.default.addObserver(forName: Notification.Name.init(rawValue: CartManager.UPDATE_TRIGGER),
+                                               object: nil,
+                                               queue: OperationQueue.main) { (notification) in
+            if let data = notification.object as?  CartTotal{
+            print(data)
+                self.navigationItem.rightBarButtonItem?.title = "Checkout (\(data.quantity))"
+            }
+        }
+//        print(cart.total)
         tableView.reloadData()
     
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreateWaqar
+        // Dispose of any resources that can be recreated.
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

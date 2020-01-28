@@ -2,8 +2,8 @@
 //  CartItemTableViewCell.swift
 //  ShoppingCart
 //
-//  Created by Waqar on 2010-01-27.
-//  Copyright © 2020 Waqar All rights reserve
+//  Created by D. on 2018-06-05.
+//  Copyright © 2020 Waqar. All rights reserved.
 //
 
 import UIKit

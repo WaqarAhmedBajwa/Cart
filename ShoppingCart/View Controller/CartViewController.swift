@@ -2,12 +2,11 @@
 //  CartViewController.swift
 //  ShoppingCart
 //
-//  Created by Waqar on 2018-06-08.
-//  Copyright © 2020 Waqar All rights reserve
+//  Created by D. on 2018-06-08.
+//  Copyright © 2020 Waqar. All rights reserved.
 //
 
 import UIKit
-import Combine
 
 class CartViewController: UIViewController {
     
@@ -33,10 +32,23 @@ class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let lastPriceSubscriber = Subscribers.Assign(object: totalLabel, keyPath: \.text)
-        cart.publisherForTotal.subscribe(lastPriceSubscriber)
-        cart.setup()
+        totalLabel.text = self.currencyHelper.display(total: cart.total)
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.init(rawValue: CartManager.UPDATE_TRIGGER),
+        object: nil,
+        queue: OperationQueue.main) { [weak self] (notification) in
+              if let data = notification.object as?  CartTotal{
+              print(data)
+                self!.updateUI(cartTotal: data)
+              }
+          }
+        
         tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
+    private func updateUI(cartTotal : CartTotal){
+        totalLabel.text = self.currencyHelper.display(total: cartTotal.price)
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +77,7 @@ class CartViewController: UIViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreateWaqar
+        // Dispose of any resources that can be recreated.
     }
     
     func showActivityIndicator() {
@@ -155,9 +167,8 @@ extension CartViewController: CartItemDelegate {
         
         //Update cart item quantity
         cartItem.quantity = quantity
-        
         cart.updateItem(product: cartItem)
-        tableView.reloadData()
+        
     }
     
 }

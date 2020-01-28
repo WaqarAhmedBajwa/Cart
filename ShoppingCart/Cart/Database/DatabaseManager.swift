@@ -3,7 +3,7 @@
 //  ShoppingCart
 //
 //  Created by Waqar Ahmed on 27/01/2020.
-//  Copyright © 2020 Waqar All rights reserve
+//  Copyright © 2020 Waqar. All rights reserved.
 //
 
 import Foundation

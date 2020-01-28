@@ -2,8 +2,8 @@
 //  ProductsManager.swift
 //  ShoppingCart
 //
-//  Created by Waqar on 2018-06-04.
-//  Copyright © 2020 Waqar All rights reserve
+//  Created by Waqar on 2020-01-27.
+//  Copyright © 2020 Waqar. All rights reserved.
 //
 
 import Foundation
