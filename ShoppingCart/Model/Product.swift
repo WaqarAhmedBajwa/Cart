@@ -41,7 +41,7 @@ class Product: Codable, Equatable, Saleable {
 }
 
 extension Product {
-    // MARK: Equatable
+    
     static func == (lhs: Product, rhs: Product) -> Bool {
         return lhs.name == rhs.name && lhs.price == rhs.price && lhs.unit == rhs.unit
     }

@@ -11,7 +11,6 @@ import Foundation
 
 protocol Saleable {
     
-
     var quantity : Int?  { get set }
     
     func getId() -> String

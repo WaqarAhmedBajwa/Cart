@@ -39,11 +39,15 @@ class CartViewController: UIViewController {
         queue: OperationQueue.main) { [weak self] (notification) in
               if let data = notification.object as?  CartTotal{
               print(data)
-                self!.updateUI(cartTotal: data)
+                self?.updateUI(cartTotal: data)
               }
           }
         
         tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func updateUI(cartTotal : CartTotal){
@@ -54,11 +58,8 @@ class CartViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //Show the acitvity indicator
         showActivityIndicator()
         
-        //Fill PickerView components
-        //Get asynchronisly component on a background thread
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async(execute: {
             self.currencyHelper.refresh() { result in
                 //Update picker on main thread
@@ -66,10 +67,6 @@ class CartViewController: UIViewController {
                     //reload the picket view with the new quotes
                     self.quotes = self.currencyHelper.all()
                     self.currencyPickerView.reloadAllComponents()
-                    
-                    //Update Cart Total lale
-//                    self.totalLabel.text = (self.cart?.total.description)! + " " + self.currencyHelper.selectedCurrency
-                    
                     self.hideActivityIndicator()
                 })
             }
@@ -156,14 +153,11 @@ extension CartViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
 extension CartViewController: CartItemDelegate {
     
-    // MARK: - CartItemDelegate
     func updateCartItem(cell: UITableViewCell, quantity: Int) {
         guard let cell = cell as? CartItemTableViewCell else { return }
         
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let cartItem = cart.items[indexPath.row]
-        
-        //Update cart item quantity
         cartItem.quantity = quantity
         cart.updateItem(product: cartItem)
         

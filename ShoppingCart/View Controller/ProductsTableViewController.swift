@@ -19,9 +19,13 @@ class ProductsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView(frame: .zero)
-        self.navigationItem.rightBarButtonItem?.title = "Checkout (\(cart.totalQuantity))"
+        cart.notifyDataSet()
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,8 +33,6 @@ class ProductsTableViewController: UITableViewController {
         //Workaround to avoid the fadout the right bar button item
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.navigationItem.rightBarButtonItem?.isEnabled = true
-        
-        //Update cart if some items quantity is equal to 0 and reload the product table and right button bar item
         
         products = cart.mapWithCart(saleable: products)
         NotificationCenter.default.addObserver(forName: Notification.Name.init(rawValue: CartManager.UPDATE_TRIGGER),
@@ -41,7 +43,7 @@ class ProductsTableViewController: UITableViewController {
                 self.navigationItem.rightBarButtonItem?.title = "Checkout (\(data.quantity))"
             }
         }
-//        print(cart.total)
+
         tableView.reloadData()
     
     }
@@ -51,23 +53,11 @@ class ProductsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showCart" {
-//            if let cartViewController = segue.destination as? CartViewController {
-//                cartViewController.cart = self.cart
-//            }
-//        }
-//    }
-    
-    // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return products.count
     }
     
@@ -87,15 +77,11 @@ class ProductsTableViewController: UITableViewController {
 
 extension ProductsTableViewController: CartItemDelegate {
     
-    // MARK: - CartItemDelegate
     func updateCartItem(cell: UITableViewCell, quantity: Int) {
         guard let cell = cell as? ProductTableViewCell else { return }
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let product = products[indexPath.row]
-        
-        //Update cart item quantity
         product.quantity = quantity
-        //Update Cart with product
         cart.updateItem(product: product)
     }
     

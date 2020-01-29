@@ -42,7 +42,6 @@ class Cart: UIView {
         }
     }
     
-
     override func prepareForInterfaceBuilder() {
         
         setupView()
@@ -57,8 +56,6 @@ class Cart: UIView {
       super.init(coder: aDecoder)
       setupView()
     }
-
-
     
     lazy var decrementButton : UIButton = {
         let button = UIButton()
@@ -81,7 +78,7 @@ class Cart: UIView {
         return button
     }()
     
-    /** Create the UILabel */
+    
     lazy var quantityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -136,5 +133,6 @@ class Cart: UIView {
         decrementButton.backgroundColor = !decrementButton.isEnabled ? .gray : buttonColors
         quantityLabel.text = String(quantity)
     }
+    
     
 }
