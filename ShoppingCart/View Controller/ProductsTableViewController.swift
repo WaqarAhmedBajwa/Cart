@@ -75,12 +75,10 @@ class ProductsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ProductTableViewCell
         
         let product = products[indexPath.item]
-        
-        cell.delegate = self
         cell.nameLabel.text = product.name
-        cell.quantityLabel.text = String(product.getQuantity())
         cell.priceLabel.text = product.displayPrice()
-        cell.quantity = product.getQuantity()
+        cell.counterView.quantity = product.getQuantity()
+        cell.counterView.delegate = self
        
         return cell
     }
