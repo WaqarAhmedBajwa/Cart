@@ -38,8 +38,6 @@ struct DatabaseManager {
             let fetchRequest : NSFetchRequest<CartItem> = CartItem.fetchRequest()
             let predicate = NSPredicate(format: "id == %@", product.getId())
             fetchRequest.predicate = predicate
-//            let sort = NSSortDescriptor(key: "id", ascending: false)
-//            fetchRequest.sortDescriptors = [sort]
             
             do
             {

@@ -39,9 +39,6 @@ extension CartManager {
     var totalQuantity : Int {
         get { return items.count }
     }
-    
-    
-    
  
     func updateItem(product: Saleable) {
 
@@ -74,9 +71,7 @@ extension CartManager {
         notifyDataSet()
     }
     
-    private func notifyDataSet(){
-        // get all from DB
-        /// notification center
+    public func notifyDataSet(){
         DispatchQueue.global().async {
             self.items = self.databaseManager.getCartProducts()
             DispatchQueue.main.async {
@@ -87,6 +82,7 @@ extension CartManager {
         
         
     }
+    
     private func remove(product: Saleable) {
         guard let index = items.index(where: { $0.getId() == product.getId() }) else { return}
         items.remove(at: index)
@@ -103,4 +99,5 @@ extension CartManager {
         }
         return products as! [T]
     }
+    
 }
