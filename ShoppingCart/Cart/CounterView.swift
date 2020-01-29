@@ -13,7 +13,7 @@ protocol CartItemDelegate {
 }
 
 @IBDesignable
-class Cart: UIView {
+class CounterView: UIView {
 
     var delegate: CartItemDelegate?
     

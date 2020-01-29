@@ -14,6 +14,6 @@ class ProductTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var counterView: Cart!
+    @IBOutlet weak var counterView: CounterView!
 
 }
