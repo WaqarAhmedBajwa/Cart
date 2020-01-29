@@ -14,12 +14,7 @@ class ProductsTableViewController: UITableViewController {
     
     fileprivate var products:[Product] = ProductsListHelper().all()
     fileprivate var cart = CartManager.shared
-    
     fileprivate let reuseIdentifier = "ProductCell"
-    
-//    @Published
-//    var cartValues: CartTotal?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,12 +70,11 @@ class ProductsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ProductTableViewCell
         
         let product = products[indexPath.item]
-        
-        cell.delegate = self
         cell.nameLabel.text = product.name
-        cell.quantityLabel.text = String(product.getQuantity())
         cell.priceLabel.text = product.displayPrice()
-        cell.quantity = product.getQuantity()
+//        cell.delegate = self
+        cell.counterView.quantity = product.getQuantity()
+        cell.counterView.delegate = self
        
         return cell
     }
@@ -88,7 +82,7 @@ class ProductsTableViewController: UITableViewController {
 
 
 extension ProductsTableViewController: CartItemDelegate {
-    
+
     // MARK: - CartItemDelegate
     func updateCartItem(cell: UITableViewCell, quantity: Int) {
         guard let cell = cell as? ProductTableViewCell else { return }

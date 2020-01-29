@@ -34,6 +34,7 @@
 		8275A8B623DEC73800DF2137 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8275A8B523DEC73800DF2137 /* DatabaseManager.swift */; };
 		8275A8B923DED72500DF2137 /* CartItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8275A8B723DED72500DF2137 /* CartItem+CoreDataClass.swift */; };
 		8275A8BA23DED72500DF2137 /* CartItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8275A8B823DED72500DF2137 /* CartItem+CoreDataProperties.swift */; };
+		8275A8E023E1460400DF2137 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8275A8DF23E1460400DF2137 /* Cart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		8275A8B523DEC73800DF2137 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		8275A8B723DED72500DF2137 /* CartItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		8275A8B823DED72500DF2137 /* CartItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		8275A8DF23E1460400DF2137 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			children = (
 				238F4F4E20C55C6500A17A0B /* ProductTableViewCell.swift */,
 				23B70EB120C6CE380036931D /* CartItemTableViewCell.swift */,
+				8275A8DF23E1460400DF2137 /* Cart.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				23B70EB220C6CE380036931D /* CartItemTableViewCell.swift in Sources */,
 				8275A8BA23DED72500DF2137 /* CartItem+CoreDataProperties.swift in Sources */,
 				8275A8B923DED72500DF2137 /* CartItem+CoreDataClass.swift in Sources */,
+				8275A8E023E1460400DF2137 /* Cart.swift in Sources */,
 				824E8B3223DB063C003485F3 /* CartManager.swift in Sources */,
 				824E8B2F23DB0249003485F3 /* Saleable.swift in Sources */,
 				238F4F1B20C558CB00A17A0B /* AppDelegate.swift in Sources */,

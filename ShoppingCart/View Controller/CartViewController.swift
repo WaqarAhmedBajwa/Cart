@@ -25,7 +25,6 @@ class CartViewController: UIViewController {
     var quotes : [(key: String, value: Float)] = []
     let currencyHelper = CurrencyHelper()
     
-    
     fileprivate let apiKey = Bundle.main.object(forInfoDictionaryKey: "CL_APIKey") as! String
     fileprivate let reuseIdentifier = "CartItemCell"
     
@@ -109,13 +108,11 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! CartItemTableViewCell
         
         let cartItem = cart.items[indexPath.item]
-        cell.delegate = self as CartItemDelegate
         
         cell.nameLabel.text = cartItem.getName()
         cell.priceLabel.text = String(cartItem.getPrice())
-        cell.quantityLabel.text = String(describing: cartItem.getQuantity())
-        cell.quantity =  cartItem.getQuantity()
-        
+        cell.counterView.quantity = cartItem.getQuantity()
+        cell.counterView.delegate = self
         return cell
     }
 }
