@@ -30,18 +30,17 @@ class ProductsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         products = ProductsListHelper().all()
-        
+        //Workaround to avoid the fadout the right bar button item
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         products = cart.mapWithCart(saleable: products)
         NotificationCenter.default.addObserver(forName: Notification.Name.init(rawValue: CartManager.UPDATE_TRIGGER),
                                                object: nil,
-                                               queue: OperationQueue.main) { [weak self] (notification) in
+                                               queue: OperationQueue.main) { (notification) in
             if let data = notification.object as?  CartTotal{
             print(data)
-                self?.navigationItem.rightBarButtonItem?.title = "Checkout (\(data.quantity))"
-                
+                self.navigationItem.rightBarButtonItem?.title = "Checkout (\(data.quantity))"
             }
         }
 
@@ -69,16 +68,21 @@ class ProductsTableViewController: UITableViewController {
         cell.nameLabel.text = product.name
         cell.priceLabel.text = product.displayPrice()
         cell.counterView.quantity = product.getQuantity()
-        cell.updateCart = { [weak self] quantity in
-   
-            product.quantity = quantity
-            self!.cart.updateItem(product: product)
-          
-        }
+        cell.counterView.delegate = self
        
         return cell
     }
 }
 
 
-
+extension ProductsTableViewController: CartItemDelegate {
+    
+    func updateCartItem(cell: UITableViewCell, quantity: Int) {
+        guard let cell = cell as? ProductTableViewCell else { return }
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let product = products[indexPath.row]
+        product.quantity = quantity
+        cart.updateItem(product: product)
+    }
+    
+}

@@ -122,13 +122,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = cartItem.getName()
         cell.priceLabel.text = String(cartItem.getPrice())
         cell.counterView.quantity = cartItem.getQuantity()
-        cell.updateCart = { [weak self] quantity in
-            
-            cartItem.quantity = quantity
-            self!.cart.updateItem(product: cartItem)
-            
-        }
-        
+        cell.counterView.delegate = self
         return cell
     }
 }
@@ -155,4 +149,18 @@ extension CartViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
         }
     }
+}
+
+extension CartViewController: CartItemDelegate {
+    
+    func updateCartItem(cell: UITableViewCell, quantity: Int) {
+        guard let cell = cell as? CartItemTableViewCell else { return }
+        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let cartItem = cart.items[indexPath.row]
+        cartItem.quantity = quantity
+        cart.updateItem(product: cartItem)
+        
+    }
+    
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CartItemDelegate {
-    func updateCartItem(quantity: Int)
+    func updateCartItem(cell: UITableViewCell, quantity: Int)
 }
 
 @IBDesignable
@@ -121,7 +121,10 @@ class CounterView: UIView {
         
         updateView()
         
-        self.delegate?.updateCartItem( quantity: quantity)
+        if let cell = self.superview?.superview as? UITableViewCell {
+            self.delegate?.updateCartItem(cell: cell, quantity: quantity)
+        }
+        
     }
     
     private func updateView() {

@@ -8,10 +8,22 @@
 
 import UIKit
 
-class CartItemTableViewCell: UITableViewCell {
-
+class CartItemTableViewCell: UITableViewCell ,CartItemDelegate {
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var counterView: CounterView!
 
+    var updateCart : ((Int) -> Void)?
+    
+    override func awakeFromNib() {
+        counterView.delegate  = self
+    }
+    
+    func updateCartItem(quantity: Int) {
+        if let callback = updateCart {
+            callback(quantity)
+        }
+    }
 }
+

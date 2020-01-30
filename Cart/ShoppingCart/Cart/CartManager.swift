@@ -8,14 +8,14 @@
 
 import Foundation
 
-public struct CartTotal {
+struct CartTotal {
     
     var price : Float
     var quantity : Int
     
 }
 
-public class CartManager {
+class CartManager {
     
     private(set) var items : [CartItem] = []
     let databaseManager : DatabaseManager!
@@ -79,25 +79,24 @@ extension CartManager {
                 NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: CartManager.UPDATE_TRIGGER), object: total)
             }
         }
+        
+        
+    }
+    
+    private func remove(product: Saleable) {
+        guard let index = items.index(where: { $0.getId() == product.getId() }) else { return}
+        items.remove(at: index)
     }
     
     func mapWithCart<T: Saleable>(saleable : [T]) -> [T]{
         
         var products = saleable as [Saleable]
         
-        let queue = DispatchQueue(label: "com.cart.myprivatecart", attributes: .concurrent)
-        let semaphore = DispatchSemaphore(value: 0)
-        
-        queue.async {
-            self.items.forEach { cartItem in
-                if let productIndex = products.firstIndex(where: {$0.getId() == cartItem.getId()}) {
-                    products[productIndex].quantity = cartItem.quantity
-                }
+        items.forEach { cartItem in
+            if let productIndex = products.firstIndex(where: {$0.getId() == cartItem.getId()}) {
+                products[productIndex].quantity = cartItem.quantity
             }
-            semaphore.signal()
         }
-        _ = semaphore.wait(timeout: .distantFuture)
-
         return products as! [T]
     }
     
