@@ -1,0 +1,16 @@
+PODS:
+  - Cart (0.1.0)
+
+DEPENDENCIES:
+  - Cart (from `../`)
+
+EXTERNAL SOURCES:
+  Cart:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Cart: 3c8a3d47dd619f400719797cb3c23afb071b6d05
+
+PODFILE CHECKSUM: 9d933ddedd42c6d0557601db9052e848942a5d91
+
+COCOAPODS: 1.8.4

@@ -1,16 +1,29 @@
-A mobile application and associated unit tests that can price a basket of
-goods in a number of different currencies.
+# Cart
 
-• The goods that can be purchased, which are all priced in US$, are:
-• Peas: $ 0,95 per bag
-• Eggs: $ 2,10 per dozen
-• Milk: $ 1,30 per bottle
-• Beans: $ 0,73 per can
+[![CI Status](https://img.shields.io/travis/Waqar Ahmed/Cart.svg?style=flat)](https://travis-ci.org/Waqar Ahmed/Cart)
+[![Version](https://img.shields.io/cocoapods/v/Cart.svg?style=flat)](https://cocoapods.org/pods/Cart)
+[![License](https://img.shields.io/cocoapods/l/Cart.svg?style=flat)](https://cocoapods.org/pods/Cart)
+[![Platform](https://img.shields.io/cocoapods/p/Cart.svg?style=flat)](https://cocoapods.org/pods/Cart)
 
-• The program allows the user to add or remove items in a basket. The user
-can click on a checkout button, which will then display the total price for the
-basket with the option to display the amount in different currencies. For
-example, if the basket contained milk and the currency selected was EUR with
-an exchange rate of 1.1, the total wouldbe 1.43 EUR.
+## Example
 
-• The list of currencies is consumed from http://jsonrates.com/. 
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Requirements
+
+## Installation
+
+Cart is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'Cart'
+```
+
+## Author
+
+Waqar Ahmed, waqar.ahmed@swenggco-software.com
+
+## License
+
+Cart is available under the MIT license. See the LICENSE file for more info.
