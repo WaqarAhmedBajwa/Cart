@@ -40,9 +40,14 @@ class ProductsListHelper {
         """.data(using: .utf8)!
     
     func all() -> [Product] {
+        var products = [Product]()
         let decoder = JSONDecoder()
-        let products = try! decoder.decode([Product].self, from: productsJson)
+        products = try! decoder.decode([Product].self, from: productsJson)
         
+        for index in 5...50{
+            let product = Product(id: String(index), name: "Product \(index)", price: 2.0, unit: "bag")
+            products.append(product)
+        }
         return products
     }
 }

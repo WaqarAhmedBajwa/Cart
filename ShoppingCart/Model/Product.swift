@@ -10,7 +10,7 @@ import Foundation
 
 class Product: Codable, Equatable, Saleable {
     
-    var quantity: Int? = 1
+    var quantity: Int? = 0
     var name: String
     var price: Float
     var unit: String
@@ -37,6 +37,13 @@ class Product: Codable, Equatable, Saleable {
         return price
     }
     
+    init(id : String, name : String, price: Float, unit : String = "Bottle") {
+        self.id = id
+        self.name = name
+        self.price = price
+        self.unit = unit
+        
+    }
 
 }
 
