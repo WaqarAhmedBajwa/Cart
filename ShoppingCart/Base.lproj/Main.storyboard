@@ -38,10 +38,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krm-Q1-oKc" customClass="CounterView" customModule="ShoppingCart" customModuleProvider="target">
-                                            <rect key="frame" x="199" y="11" width="160" height="33"/>
+                                            <rect key="frame" x="273" y="11" width="86" height="33"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="160" id="8WL-DL-BOO"/>
+                                                <constraint firstAttribute="width" constant="86" id="8WL-DL-BOO"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="buttonColors">

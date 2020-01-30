@@ -96,7 +96,7 @@ class CounterView: UIView {
         let stackView = UIStackView(arrangedSubviews: [decrementButton,quantityLabel,incrementButton])
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
-        stackView.spacing = 5.0
+        stackView.spacing = 10.0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(stackView)
         

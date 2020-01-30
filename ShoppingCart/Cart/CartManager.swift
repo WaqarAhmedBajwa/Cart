@@ -10,8 +10,8 @@ import Foundation
 
 public struct CartTotal {
     
-    var price : Float
-    var quantity : Int
+    var totalAmount : Float
+    var totalItems : Int
     
 }
 
@@ -40,16 +40,16 @@ extension CartManager {
         get { return items.count }
     }
  
-    func updateItem(product: Saleable) {
+    func updateItem(saleable: Saleable) {
 
-        if let item = databaseManager.get(cartProduct: product) {
-            if(product.getQuantity() == 0){
-                if databaseManager.delete(cartItem: product){
+        if let item = databaseManager.get(cartProduct: saleable) {
+            if(saleable.getQuantity() == 0){
+                if databaseManager.delete(cartItem: saleable){
                     
                 }
                 
             }else{
-                item.quantity = product.getQuantity()
+                item.quantity = saleable.getQuantity()
                 if databaseManager.save() {
                     print("Item updated")
                 }
@@ -57,8 +57,8 @@ extension CartManager {
             
         }
         else{
-            if(product.getQuantity() > 0){
-                _ = CartItem(product: product)
+            if(saleable.getQuantity() > 0){
+                _ = CartItem(product: saleable)
                 if databaseManager.save() {
                     print("New item added")
                 }
@@ -75,7 +75,7 @@ extension CartManager {
         DispatchQueue.global().async {
             self.items = self.databaseManager.getCartProducts()
             DispatchQueue.main.async {
-                let total = CartTotal(price: self.total, quantity: self.totalQuantity)
+                let total = CartTotal(totalAmount: self.total, totalItems: self.totalQuantity)
                 NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: CartManager.UPDATE_TRIGGER), object: total)
             }
         }

@@ -40,7 +40,7 @@ class ProductsTableViewController: UITableViewController {
                                                queue: OperationQueue.main) { [weak self] (notification) in
             if let data = notification.object as?  CartTotal{
             print(data)
-                self?.navigationItem.rightBarButtonItem?.title = "Checkout (\(data.quantity))"
+                self?.navigationItem.rightBarButtonItem?.title = "Checkout (\(data.totalItems))"
                 
             }
         }
@@ -72,7 +72,7 @@ class ProductsTableViewController: UITableViewController {
         cell.updateCart = { [weak self] quantity in
    
             product.quantity = quantity
-            self!.cart.updateItem(product: product)
+            self!.cart.updateItem(saleable: product)
           
         }
        

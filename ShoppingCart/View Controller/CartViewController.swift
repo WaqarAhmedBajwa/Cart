@@ -51,7 +51,7 @@ class CartViewController: UIViewController {
     }
     
     private func updateUI(cartTotal : CartTotal){
-        totalLabel.text = self.currencyHelper.display(total: cartTotal.price)
+        totalLabel.text = self.currencyHelper.display(total: cartTotal.totalAmount)
         tableView.reloadData()
     }
     
@@ -125,7 +125,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.updateCart = { [weak self] quantity in
             
             cartItem.quantity = quantity
-            self!.cart.updateItem(product: cartItem)
+            self!.cart.updateItem(saleable: cartItem)
             
         }
         
