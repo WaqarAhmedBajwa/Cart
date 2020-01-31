@@ -12,7 +12,14 @@
 		283C4819D35F4BC183B2B9CC1B2A0654 /* Pods-Cart_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DB7ED98039C0F8F9CEE40BFDABA0C /* Pods-Cart_Example-dummy.m */; };
 		638561389220E082D97CA1342380063D /* Pods-Cart_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F8B18DCFBC82827DB881A4E43D22A0 /* Pods-Cart_Tests-dummy.m */; };
 		7337118EAD531D9BA7FDD457159F5D1D /* Pods-Cart_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07867ABC0916C82B162FC2FC4DCC2CCF /* Pods-Cart_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		89C708B233873E0360C4E91EBD6F802F /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3FBBE7CC62E12E1FA2B0023279E459 /* ReplaceMe.swift */; };
+		821CC91C23E30ABB00D80108 /* ShoppingCartDB.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 821CC91B23E30ABB00D80108 /* ShoppingCartDB.xcdatamodel */; };
+		8234696723E2E22D00341468 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234696223E2E22D00341468 /* PersistanceService.swift */; };
+		8234696823E2E22D00341468 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234696323E2E22D00341468 /* DatabaseManager.swift */; };
+		8234696923E2E22D00341468 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234696423E2E22D00341468 /* CartManager.swift */; };
+		8234696A23E2E22D00341468 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234696523E2E22D00341468 /* CounterView.swift */; };
+		8234696C23E2E50800341468 /* Saleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234696B23E2E50800341468 /* Saleable.swift */; };
+		8234696F23E2E52D00341468 /* CartItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234696D23E2E52D00341468 /* CartItem+CoreDataProperties.swift */; };
+		8234697023E2E52D00341468 /* CartItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234696E23E2E52D00341468 /* CartItem+CoreDataClass.swift */; };
 		9DF936952250799A917C7AD5005A462F /* Cart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F021AD476F2EE5399BA168504BD6EC6 /* Cart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9A49C0888E6935263EBFE2B70729CA1 /* Cart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C33F454ACB34BAE8AFAAC0D896B6B9D1 /* Cart-dummy.m */; };
 		A9C6554D06778BED26691DF1F12E54FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -41,26 +48,33 @@
 		07867ABC0916C82B162FC2FC4DCC2CCF /* Pods-Cart_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Cart_Example-umbrella.h"; sourceTree = "<group>"; };
 		0A9DB7ED98039C0F8F9CEE40BFDABA0C /* Pods-Cart_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Cart_Example-dummy.m"; sourceTree = "<group>"; };
 		13A35ACF3F994D88048F53A5611E9E69 /* Pods-Cart_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Cart_Example-Info.plist"; sourceTree = "<group>"; };
-		157079D8F085C9D16D07FB2839785322 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		157079D8F085C9D16D07FB2839785322 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		19DFF42176DD483699BD30B3508C34F1 /* Pods-Cart_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Cart_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1B012ED27F410A90E584865F69DFF465 /* Pods-Cart_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Cart_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1E703BBAE4FFE9613C96519FC9A886A2 /* Cart.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Cart.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		26BB709088E2D484CA29FBB3783BCD7D /* Pods_Cart_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Cart_Example.framework; path = "Pods-Cart_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E703BBAE4FFE9613C96519FC9A886A2 /* Cart.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Cart.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		26BB709088E2D484CA29FBB3783BCD7D /* Pods_Cart_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cart_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E047C354F67DB22AEAEA55523FB09AC /* Pods-Cart_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Cart_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		36DEA6EBE44BF0DF1022EE78165C6EB9 /* Cart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cart.xcconfig; sourceTree = "<group>"; };
 		36F94A37D4FE86DDA88A8182E2B9E3C3 /* Cart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cart-prefix.pch"; sourceTree = "<group>"; };
 		387F751B1C23F58DDB7E74F458BCD4CA /* Pods-Cart_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Cart_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4F021AD476F2EE5399BA168504BD6EC6 /* Cart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cart-umbrella.h"; sourceTree = "<group>"; };
-		5A5F487A13080BC317D6704BEF2A2801 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		5A5F487A13080BC317D6704BEF2A2801 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		648D9F156AB77F770C7638574023E026 /* Pods-Cart_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Cart_Tests-umbrella.h"; sourceTree = "<group>"; };
-		6E3FBBE7CC62E12E1FA2B0023279E459 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = Cart/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
-		827E189712EED60EDBDA50E168CC1589 /* Pods_Cart_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Cart_Tests.framework; path = "Pods-Cart_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		821CC91B23E30ABB00D80108 /* ShoppingCartDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingCartDB.xcdatamodel; sourceTree = "<group>"; };
+		8234696223E2E22D00341468 /* PersistanceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
+		8234696323E2E22D00341468 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		8234696423E2E22D00341468 /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		8234696523E2E22D00341468 /* CounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		8234696B23E2E50800341468 /* Saleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Saleable.swift; sourceTree = "<group>"; };
+		8234696D23E2E52D00341468 /* CartItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CartItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8234696E23E2E52D00341468 /* CartItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CartItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		827E189712EED60EDBDA50E168CC1589 /* Pods_Cart_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cart_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AAD063059F8F8F2A3D84CBD7F2377D7 /* Pods-Cart_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Cart_Example-frameworks.sh"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A260F510372AD7664BF9E324A572BB93 /* Cart-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Cart-Info.plist"; sourceTree = "<group>"; };
 		A6FCEEA71954B6D9E543C60BA8BD4360 /* Pods-Cart_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Cart_Tests.modulemap"; sourceTree = "<group>"; };
-		ACA2AB61FC40DA9848A2C22736373D7C /* Cart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cart.framework; path = Cart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACA2AB61FC40DA9848A2C22736373D7C /* Cart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12CC567BE67D5012A1526C7D7D2D708 /* Pods-Cart_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Cart_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BC8CC0B2D5B49D6920CA489CC5C49AFF /* Pods-Cart_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Cart_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C1B962BF25739679150AB1DAEE1A65FC /* Cart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Cart.modulemap; sourceTree = "<group>"; };
@@ -118,6 +132,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8234695E23E2E1BD00341468 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8234696B23E2E50800341468 /* Saleable.swift */,
+				8234696423E2E22D00341468 /* CartManager.swift */,
+				8234696523E2E22D00341468 /* CounterView.swift */,
+				8234695F23E2E22D00341468 /* Database */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8234695F23E2E22D00341468 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				8234696E23E2E52D00341468 /* CartItem+CoreDataClass.swift */,
+				8234696D23E2E52D00341468 /* CartItem+CoreDataProperties.swift */,
+				821CC91B23E30ABB00D80108 /* ShoppingCartDB.xcdatamodel */,
+				8234696223E2E22D00341468 /* PersistanceService.swift */,
+				8234696323E2E22D00341468 /* DatabaseManager.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		88B70AB9D983FC8835D869F30B0277FC /* Pods-Cart_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +191,7 @@
 		A99097BC3276B83AA4C5C5315BD0EE8F /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				6E3FBBE7CC62E12E1FA2B0023279E459 /* ReplaceMe.swift */,
+				8234695E23E2E1BD00341468 /* Source */,
 				BE9200E2AA88ABF71498A1A429B8F3E8 /* Pod */,
 				F41CEC847638537E70DA37CF3705E4C6 /* Support Files */,
 			);
@@ -315,6 +352,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					91AC53B4652711DC591C3E6E16045EE0 = {
+						LastSwiftMigration = 1130;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -365,8 +407,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8234696F23E2E52D00341468 /* CartItem+CoreDataProperties.swift in Sources */,
+				8234696923E2E22D00341468 /* CartManager.swift in Sources */,
+				8234696823E2E22D00341468 /* DatabaseManager.swift in Sources */,
 				A9A49C0888E6935263EBFE2B70729CA1 /* Cart-dummy.m in Sources */,
-				89C708B233873E0360C4E91EBD6F802F /* ReplaceMe.swift in Sources */,
+				8234696C23E2E50800341468 /* Saleable.swift in Sources */,
+				8234696723E2E22D00341468 /* PersistanceService.swift in Sources */,
+				8234697023E2E52D00341468 /* CartItem+CoreDataClass.swift in Sources */,
+				821CC91C23E30ABB00D80108 /* ShoppingCartDB.xcdatamodel in Sources */,
+				8234696A23E2E22D00341468 /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +469,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-Cart_Example/Pods-Cart_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Cart_Example/Pods-Cart_Example.modulemap";
@@ -441,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36DEA6EBE44BF0DF1022EE78165C6EB9 /* Cart.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -453,7 +503,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Cart/Cart-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Cart/Cart-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Cart/Cart.modulemap";
 				PRODUCT_MODULE_NAME = Cart;
@@ -473,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36DEA6EBE44BF0DF1022EE78165C6EB9 /* Cart.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -485,7 +536,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Cart/Cart-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Cart/Cart-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Cart/Cart.modulemap";
 				PRODUCT_MODULE_NAME = Cart;
@@ -493,6 +544,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -516,7 +568,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-Cart_Tests/Pods-Cart_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Cart_Tests/Pods-Cart_Tests.modulemap";
@@ -582,13 +634,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -645,7 +696,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -674,7 +725,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-Cart_Example/Pods-Cart_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Cart_Example/Pods-Cart_Example.modulemap";
@@ -708,7 +759,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-Cart_Tests/Pods-Cart_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Cart_Tests/Pods-Cart_Tests.modulemap";

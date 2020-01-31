@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cart
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        _ = PersistanceService.shared.context
+//        _ = PersistanceService.shared.backgroundContext
+        
         return true
     }
 
