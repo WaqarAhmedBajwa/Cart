@@ -20,18 +20,23 @@ class ProductsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView(frame: .zero)
-        
+        NotificationCenter.default.addObserver(forName: Notification.Name.init(rawValue: CartManager.UPDATE_TRIGGER),
+                                               object: nil,
+                                               queue: OperationQueue.main) { [weak self] (notification) in
+            if let data = notification.object as?  CartTotal{
+            print("ProductsTableViewController: \(data)")
+                self?.navigationItem.rightBarButtonItem?.title = "Checkout (\(data.totalItems))"
+                
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        cart.notifyDataSet()
+        cart.notifyDataSet() // To call viewDidLoad observer first time
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -39,18 +44,8 @@ class ProductsTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         products = cart.mapWithCart(saleable: products)
-        NotificationCenter.default.addObserver(forName: Notification.Name.init(rawValue: CartManager.UPDATE_TRIGGER),
-                                               object: nil,
-                                               queue: OperationQueue.main) { [weak self] (notification) in
-            if let data = notification.object as?  CartTotal{
-            print(data)
-                self?.navigationItem.rightBarButtonItem?.title = "Checkout (\(data.totalItems))"
-                
-            }
-        }
-
         tableView.reloadData()
-    
+
     }
     
     override func didReceiveMemoryWarning() {

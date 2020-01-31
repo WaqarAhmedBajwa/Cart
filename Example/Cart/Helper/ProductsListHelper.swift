@@ -41,10 +41,10 @@ class ProductsListHelper {
     
     func all() -> [Product] {
         var products = [Product]()
-        let decoder = JSONDecoder()
-        products = try! decoder.decode([Product].self, from: productsJson)
+//        let decoder = JSONDecoder()
+//        products = try! decoder.decode([Product].self, from: productsJson)
         
-        for index in 5...50{
+        for index in 1...50{
             let product = Product(id: String(index), name: "Product \(index)", price: 2.0, unit: "bag")
             products.append(product)
         }

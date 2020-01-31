@@ -54,33 +54,13 @@ extension CartItem : Saleable {
     }
     
     
-    convenience init(product: Saleable) {
+    convenience init(with item: Saleable) {
         self.init(context: PersistanceService.shared.backgroundContext)
-//        self.init(usedContext: PersistanceService.shared.context)
-        self.id = product.getId()
-        self.quantity = product.getQuantity()
-        self.name = product.getName()
-        self.price = product.getPrice()
+        self.id = item.getId()
+        self.quantity = item.getQuantity()
+        self.name = item.getName()
+        self.price = item.getPrice()
        
     }
     
 }
-
-
-public extension CartItem {
-
-    convenience init(usedContext: NSManagedObjectContext) {
-        let name = String(describing: type(of: self))
-        let entity = NSEntityDescription.entity(forEntityName: name, in: usedContext)!
-        self.init(entity: entity, insertInto: usedContext)
-    }
-
-}
-
- 
- 
- 
- 
-
- 
- 

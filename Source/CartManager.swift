@@ -55,19 +55,19 @@ extension CartManager {
             }else{
                 item.quantity = saleable.getQuantity()
                 if databaseManager.save() {
-                    print("Item updated")
+                    print("CartManager: Item updated")
                 }
             }
             
         }
         else{
             if(saleable.getQuantity() > 0){
-                _ = CartItem(product: saleable)
+                _ = CartItem(with: saleable)
                 if databaseManager.save() {
-                    print("New item added")
+                    print("CartManager: New item added")
                 }
                 else {
-                    print("Error on save in database")
+                    print("CartManager: Error on save in database")
                 }
             }
         }
@@ -93,16 +93,19 @@ extension CartManager {
     
     public func mapWithCart<T: Saleable>(saleable : [T]) -> [T]{
         
-        var products = saleable as [Saleable]
+        let products = saleable as [Saleable]
         
         let queue = DispatchQueue(label: "com.cart.myprivatecart", attributes: .concurrent)
         let semaphore = DispatchSemaphore(value: 0)
-        
         queue.async {
-            self.items.forEach { cartItem in
-                if let productIndex = products.firstIndex(where: {$0.getId() == cartItem.getId()}) {
-                    products[productIndex].quantity = cartItem.quantity
+            for var product in products {
+                if let cartItem = self.items.first(where: { product.getId() == $0.getId() }) {
+                    product.quantity = cartItem.quantity
                 }
+                else{
+                    product.quantity = 0
+                }
+                
             }
             semaphore.signal()
         }

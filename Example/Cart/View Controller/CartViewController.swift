@@ -24,7 +24,7 @@ class CartViewController: UIViewController {
     var cart = CartManager.shared
     var quotes : [(key: String, value: Float)] = []
     let currencyHelper = CurrencyHelper()
-    
+    var notifObservers = [NSObjectProtocol]()
     
     fileprivate let apiKey = Bundle.main.object(forInfoDictionaryKey: "CL_APIKey") as! String
     fileprivate let reuseIdentifier = "CartItemCell"
@@ -35,21 +35,26 @@ class CartViewController: UIViewController {
         
         totalLabel.text = self.currencyHelper.display(total: cart.total)
         
-        NotificationCenter.default.addObserver(forName: Notification.Name.init(rawValue: CartManager.UPDATE_TRIGGER),
+        let observer = NotificationCenter.default.addObserver(forName: Notification.Name.init(rawValue: CartManager.UPDATE_TRIGGER),
         object: nil,
         queue: OperationQueue.main) { [weak self] (notification) in
               if let data = notification.object as?  CartTotal{
-              print(data)
+              print("CartViewController: \(data)")
                 self?.updateUI(cartTotal: data)
               }
           }
+        notifObservers.append(observer)
         
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
+    deinit {
+        for observer in notifObservers {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        notifObservers.removeAll()
     }
+    
     
     private func updateUI(cartTotal : CartTotal){
         totalLabel.text = self.currencyHelper.display(total: cartTotal.totalAmount)
