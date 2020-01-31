@@ -17,7 +17,7 @@ public struct CartTotal {
 
 public class CartManager {
     
-    public var items : [CartItem] = []
+    public private(set) var items : [CartItem] = []
     let databaseManager : DatabaseManager!
     public static let shared = CartManager()
     public static let UPDATE_TRIGGER = "Update_List"

@@ -34,7 +34,6 @@ class ProductsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        products = ProductsListHelper().all()
         
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.navigationItem.rightBarButtonItem?.isEnabled = true

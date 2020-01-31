@@ -9,17 +9,14 @@
 import Foundation
 import CoreData
 
-struct App {
+struct Framework {
     static let name = "ShoppingCartDB"  //Model name
-    static let databaseName = String(format: "%@.sqlite", App.name)
+    static let databaseName = String(format: "%@.sqlite", Framework.name)
     static let identifier: String  = "org.cocoapods.Cart"       //Framework bundle ID
             
 }
 
 class PersistanceService{
-    
-    
-    
     
     public static let shared = PersistanceService()
     var completionHanler : (() -> ())?
@@ -41,26 +38,17 @@ class PersistanceService{
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
+
+        let bundle = Bundle(identifier: Framework.identifier)
+        let modelURL = bundle!.url(forResource: Framework.name, withExtension: "mom")!
+        let managedObjectModel =  NSManagedObjectModel(contentsOf: modelURL)
         
-        let container = NSPersistentContainer(name: App.name)
-        
-        /*
-         let fileManager = FileManager.default
-                guard let  currentPath = URL(string: String(format: "/%@",App.databaseName)) else { return container }
-                print(currentPath)
-         */
-//        let messageKitBundle = Bundle(identifier: App.identifier)
-//        let modelURL = messageKitBundle!.url(forResource: App.name, withExtension: "momd")!
-//        let managedObjectModel =  NSManagedObjectModel(contentsOf: modelURL)
-//        
-//        
-//        let container = NSPersistentContainer(name: App.name, managedObjectModel: managedObjectModel!)
-        
+        let container = NSPersistentContainer(name: Framework.name, managedObjectModel: managedObjectModel!)
         
         let storeURL = try! FileManager
             .default
             .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            .appendingPathComponent(App.databaseName)
+            .appendingPathComponent(Framework.databaseName)
         print(storeURL)
         
         let description = NSPersistentStoreDescription(url: storeURL)
@@ -84,7 +72,7 @@ class PersistanceService{
         
         self.completionHanler = completion
         
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             let context = self.persistentContainer.viewContext
             
             if context.hasChanges {
@@ -97,7 +85,7 @@ class PersistanceService{
                     print("Unresolved error \(nserror), \(nserror.userInfo)")
                 }
             }
-        }
+//        }
     }
     
     func saveBackgroundContext(completion : @escaping () -> ()) {

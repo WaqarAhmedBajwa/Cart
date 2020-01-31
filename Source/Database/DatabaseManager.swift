@@ -20,7 +20,7 @@ struct DatabaseManager {
 
         do
         {
-            products =  try PersistanceService.shared.context.fetch(fetchRequest)
+            products =  try PersistanceService.shared.backgroundContext.fetch(fetchRequest)
 
         }
         catch
@@ -42,7 +42,7 @@ struct DatabaseManager {
             
             do
             {
-                cartItems =  try PersistanceService.shared.context.fetch(fetchRequest)
+                cartItems =  try PersistanceService.shared.backgroundContext.fetch(fetchRequest)
             }
             catch
             {
@@ -90,7 +90,6 @@ struct DatabaseManager {
         
         let semaphore = DispatchSemaphore(value: 0)
         PersistanceService.shared.saveBackgroundContext {
-        
             semaphore.signal()
         }
         _ = semaphore.wait(timeout: .distantFuture)

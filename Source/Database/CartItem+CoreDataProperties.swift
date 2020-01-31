@@ -55,8 +55,8 @@ extension CartItem : Saleable {
     
     
     convenience init(product: Saleable) {
-//        self.init(context: PersistanceService.shared.context)
-        self.init(usedContext: PersistanceService.shared.context)
+        self.init(context: PersistanceService.shared.backgroundContext)
+//        self.init(usedContext: PersistanceService.shared.context)
         self.id = product.getId()
         self.quantity = product.getQuantity()
         self.name = product.getName()
