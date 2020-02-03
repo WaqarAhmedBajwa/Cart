@@ -24,13 +24,16 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/Waqar Ahmed/Cart'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Waqar Ahmed' => 'waqar.ahmed@swenggco-software.com' }
-  s.source           = { :git => 'https://github.com/Waqar Ahmed/Cart.git', :tag => s.version.to_s }
+  s.author           = { 'Waqar Ahmed' => 'waqarahmed.bajwa@gmail.com' }
+  s.source           = { :git => 'https://github.com/WaqarAhmedBajwa/Cart', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '12.0'
 
-  s.source_files = 'Cart/Classes/**/*'
+  s.source_files = 'Cart/Source/**/*'
+  s.platforms = {
+      "ios": "12.0"
+  }
   
   # s.resource_bundles = {
   #   'Cart' => ['Cart/Assets/*.png']
