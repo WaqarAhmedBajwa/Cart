@@ -148,7 +148,6 @@
 			children = (
 				8234696E23E2E52D00341468 /* CartItem+CoreDataClass.swift */,
 				8234696D23E2E52D00341468 /* CartItem+CoreDataProperties.swift */,
-				821CC91B23E30ABB00D80108 /* ShoppingCartDB.xcdatamodel */,
 				8234696223E2E22D00341468 /* PersistanceService.swift */,
 				8234696323E2E22D00341468 /* DatabaseManager.swift */,
 			);
@@ -191,6 +190,7 @@
 		A99097BC3276B83AA4C5C5315BD0EE8F /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				821CC91B23E30ABB00D80108 /* ShoppingCartDB.xcdatamodel */,
 				8234695E23E2E1BD00341468 /* Source */,
 				BE9200E2AA88ABF71498A1A429B8F3E8 /* Pod */,
 				F41CEC847638537E70DA37CF3705E4C6 /* Support Files */,

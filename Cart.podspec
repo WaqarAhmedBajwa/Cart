@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Cart'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'This is an example of cart. First view is for all products and other view is selected products in cart'
 
 # This description is used to generate tags and improve search results.
@@ -35,11 +35,11 @@ Pod::Spec.new do |s|
       "ios": "12.0"
   }
   
-  s.resources = 'Source/Database/ShoppingCartDB.xcdatamodel'
+  #s.resources = 'Source/Database/ShoppingCartDB.xcdatamodel'
   
-   #s.resource_bundles = {
-   #  'Cart' => ['Source/Database/ShoppingCartDB.xcdatamodel']
-   #}
+   s.resource_bundles = {
+     'Cart' => ['ShoppingCartDB.xcdatamodel']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
