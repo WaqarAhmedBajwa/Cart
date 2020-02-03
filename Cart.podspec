@@ -18,10 +18,10 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+'This is an example of cart. First view is for all products and other view is selected products in cart'
                        DESC
 
-  s.homepage         = 'https://github.com/Waqar Ahmed/Cart'
+  s.homepage         = 'https://github.com/WaqarAhmedBajwa/Cart'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'WaqarAhmedBajwa' => 'waqarahmed.bajwa@gmail.com' }
@@ -29,8 +29,8 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '12.0'
-
-  s.source_files = 'Cart/Source/**/*'
+  s.swift_version = '4.0'
+  s.source_files = 'Source/**/*'
   s.platforms = {
       "ios": "12.0"
   }
