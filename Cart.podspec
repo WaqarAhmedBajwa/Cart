@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Cart'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'This is an example of cart. First view is for all products and other view is selected products in cart'
 
 # This description is used to generate tags and improve search results.
