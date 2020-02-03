@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Cart'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Cart.'
+  s.summary          = 'This is an example of cart. First view is for all products and other view is selected products in cart'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -24,8 +24,8 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/Waqar Ahmed/Cart'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Waqar Ahmed' => 'waqarahmed.bajwa@gmail.com' }
-  s.source           = { :git => 'https://github.com/WaqarAhmedBajwa/Cart', :tag => s.version.to_s }
+  s.author           = { 'WaqarAhmedBajwa' => 'waqarahmed.bajwa@gmail.com' }
+  s.source           = { :git => 'https://github.com/WaqarAhmedBajwa/Cart.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '12.0'
