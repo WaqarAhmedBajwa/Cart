@@ -35,9 +35,9 @@ Pod::Spec.new do |s|
       "ios": "12.0"
   }
   
-  # s.resource_bundles = {
-  #   'Cart' => ['Cart/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'Cart' => ['Source/Database/ShoppingCartDB.xcdatamodel']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
