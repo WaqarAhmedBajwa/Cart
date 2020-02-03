@@ -33,7 +33,7 @@ class ProductsTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        cart.notifyDataSet() // To call viewDidLoad observer first time
+        cart.notifyDataSet()
     }
     
    

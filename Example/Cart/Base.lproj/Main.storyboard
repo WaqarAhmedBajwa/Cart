@@ -127,16 +127,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X39-TM-exu" customClass="CounterView" customModule="Cart">
-                                                    <rect key="frame" x="189" y="11" width="171" height="51"/>
+                                                    <rect key="frame" x="274" y="11" width="86" height="51"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="160" id="261-ap-1UJ"/>
+                                                        <constraint firstAttribute="width" constant="86" id="261-ap-1UJ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="X39-TM-exu" secondAttribute="bottom" id="Nlo-dt-wjS"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="X39-TM-exu" secondAttribute="trailing" constant="10" id="Uld-El-3jE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="X39-TM-exu" secondAttribute="trailing" id="Uld-El-3jE"/>
                                                 <constraint firstItem="X39-TM-exu" firstAttribute="top" secondItem="BB2-ag-e6e" secondAttribute="topMargin" id="kaY-cd-Qdh"/>
                                             </constraints>
                                         </tableViewCellContentView>
